@@ -1,8 +1,8 @@
 import {
     Observable,
     from
- } from 'rxjs';
+} from 'rxjs';
 
- const o = from([1,2,3,4,5]);
+const o = from([1, 2, 3, 4, 5]);
 
- o.subscribe(d=>console.log(`got ${d}`));
+o.subscribe(d => console.log(`got ${d}`));
