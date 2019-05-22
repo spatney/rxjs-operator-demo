@@ -1,8 +1,35 @@
-import {
-    Observable,
-    from
-} from 'rxjs';
+import { BufferDemo } from "./operators/buffering/buffer";
+import { BufferCountDemo } from "./operators/buffering/bufferCount";
+import { BufferTimeDemo } from "./operators/buffering/bufferTime";
+import { BufferToggleDemo } from "./operators/buffering/bufferToggle";
+import { BufferWhenDemo } from "./operators/buffering/bufferWhen";
+import { WindowDemo } from "./operators/buffering/window";
+import { WindowCountDemo } from "./operators/buffering/windowCount";
+import { WindowTimeDemo } from "./operators/buffering/windowTime";
+import { WindowToggleDemo } from "./operators/buffering/windowToggle";
+import { WindowWhenDemo } from "./operators/buffering/windowWhen";
+import { CatchErrorDemo } from "./operators/error-handling/catchError";
+import { ThrowIfEmptyDemo } from "./operators/error-handling/throwIfEmpty";
+import { OnErrorResumeNextDemo } from "./operators/error-handling/onErrorResumeNext";
+import { RetryDemo } from "./operators/error-handling/retry";
+import { RetryWhenDemo } from "./operators/error-handling/retryWhen";
+import { TimeoutDemo } from "./operators/error-handling/timeout";
+import { TimeoutWithDemo } from "./operators/error-handling/timeoutWith";
 
-const o = from([1, 2, 3, 4, 5]);
-
-o.subscribe(d => console.log(`got ${d}`));
+//BufferDemo();
+//BufferCountDemo();
+//BufferTimeDemo();
+//BufferToggleDemo();
+//BufferWhenDemo();
+//WindowDemo();
+//WindowCountDemo();
+//WindowTimeDemo();
+//WindowToggleDemo();
+//WindowWhenDemo();
+//CatchErrorDemo();
+//ThrowIfEmptyDemo();
+//OnErrorResumeNextDemo();
+//RetryDemo();
+//RetryWhenDemo();
+//TimeoutDemo();
+TimeoutWithDemo();
