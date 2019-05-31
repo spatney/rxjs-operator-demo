@@ -123,12 +123,20 @@ demos.push(ObserveOnDemo);
 demos.push(SubscribeOnDemo);
 
 const subject = new Subject();
-const _ = (i: any) => i();
+
+console.log = (d: any) => {
+    if (typeof (d) === 'object') {
+        d = JSON.stringify(d);
+    }
+    const el = document.createElement('div');
+    el.innerHTML = d;
+    document.getElementById('area').append(el);
+}
 
 of(...demos)
     .pipe(last()).subscribe(d => {
         const name = d.name.replace('Demo', '');
-        (<any>document.getElementById('input')).value = name;
+        document.getElementsByTagName('input')[0].value = name;
     });
 
 of(...demos)
@@ -136,13 +144,14 @@ of(...demos)
         repeatWhen(_ => subject),
         filter(d => {
             const name = d.name.replace('Demo', '').toLowerCase();
-            return name === (<any>document.getElementById('input')).value.toLowerCase();
+            return name === document.getElementsByTagName('input')[0].value.toLowerCase();
         })
-    ).subscribe(_)
+    ).subscribe(_ => _())
 
 document.getElementById('input').addEventListener('keyup', event => {
     if (event.keyCode === 13) {
         event.preventDefault();
+        document.getElementById('area').innerHTML = "";
         subject.next();
     }
 });
