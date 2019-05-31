@@ -1,12 +1,12 @@
-import { of, asapScheduler, asyncScheduler } from 'rxjs';
-import { observeOn, tap } from 'rxjs/operators';
+import { asapScheduler, asyncScheduler, of } from 'rxjs';
+import { subscribeOn, tap } from 'rxjs/operators';
 
-export async function ObserveOnDemo() {
+export function SubscribeOnDemo() {
 
     of('asap')
         .pipe(
             tap(x => console.log(`${x} queued`)),
-            observeOn(asapScheduler)
+            subscribeOn(asapScheduler)
         )
         .subscribe(
             (d) => console.log(`${d} emitted`),
@@ -17,7 +17,7 @@ export async function ObserveOnDemo() {
     of('async')
         .pipe(
             tap(x => console.log(`${x} queued`)),
-            observeOn(asyncScheduler)
+            subscribeOn(asyncScheduler)
         )
         .subscribe(
             (d) => console.log(`${d} emitted`),
@@ -32,7 +32,7 @@ export async function ObserveOnDemo() {
         .subscribe(
             (d) => console.log(`${d} emitted`),
             (e: Error) => console.log(e),
-            () => console.log('immidiate complete')
+            () => console.log('immediate complete')
         );
 
     console.log('function end');

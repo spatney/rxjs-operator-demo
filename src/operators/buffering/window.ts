@@ -1,5 +1,5 @@
 import { interval } from 'rxjs';
-import { take, tap, bufferWhen, window, switchMap, toArray } from 'rxjs/operators';
+import { switchMap, take, toArray, window } from 'rxjs/operators';
 
 export function WindowDemo() {
     interval(100)

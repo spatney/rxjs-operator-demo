@@ -55,6 +55,7 @@ import { FinalizeDemo } from "./operators/observable transformation/finalize";
 import { AuditTimeDemo } from "./operators/time, duration & scheduled/auditTime";
 import { SampleTimeDemo } from "./operators/time, duration & scheduled/sampleTime";
 import { ObserveOnDemo } from "./operators/time, duration & scheduled/observeOn";
+import { SubscribeOnDemo } from "./operators/time, duration & scheduled/subscribeOn";
 
 //BufferDemo();
 //BufferCountDemo();
@@ -113,4 +114,5 @@ import { ObserveOnDemo } from "./operators/time, duration & scheduled/observeOn"
 //FinalizeDemo();
 //AuditTimeDemo();
 //SampleTimeDemo();
-ObserveOnDemo();
+//ObserveOnDemo();
+SubscribeOnDemo();

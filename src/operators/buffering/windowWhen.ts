@@ -1,5 +1,5 @@
 import { timer } from 'rxjs';
-import { take, switchMap, toArray, windowWhen, tap, mergeAll } from 'rxjs/operators';
+import { mergeAll, take, tap, windowWhen } from 'rxjs/operators';
 
 export function WindowWhenDemo() {
     timer(0, 100)
