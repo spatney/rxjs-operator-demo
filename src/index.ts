@@ -59,6 +59,16 @@ import { AuditTimeDemo } from "./operators/time, duration & scheduled/auditTime"
 import { ObserveOnDemo } from "./operators/time, duration & scheduled/observeOn";
 import { SampleTimeDemo } from "./operators/time, duration & scheduled/sampleTime";
 import { SubscribeOnDemo } from "./operators/time, duration & scheduled/subscribeOn";
+import { DebounceDemo } from "./operators/time, duration & scheduled/debounce";
+import { DebounceTimeDemo } from "./operators/time, duration & scheduled/debounceTime";
+import { DelayDemo } from "./operators/time, duration & scheduled/delay";
+import { DelayWhenDemo } from "./operators/time, duration & scheduled/delayWhen";
+import { ThrottleTimeDemo } from "./operators/time, duration & scheduled/throttleTime";
+import { TimeIntervalDemo } from "./operators/time, duration & scheduled/timeInterval";
+import { TimeStampDemo } from "./operators/time, duration & scheduled/timestamp";
+import { ConcatMapDemo } from "./operators/value transformation/concatMap";
+import { ConcatMapToDemo } from "./operators/value transformation/concatMapTo";
+import { DefaultIfEmptyDemo } from "./operators/value transformation/defaultIfEmpty";
 
 const demos = [];
 
@@ -121,6 +131,16 @@ demos.push(AuditTimeDemo);
 demos.push(SampleTimeDemo);
 demos.push(ObserveOnDemo);
 demos.push(SubscribeOnDemo);
+demos.push(DebounceDemo);
+demos.push(DebounceTimeDemo);
+demos.push(DelayDemo);
+demos.push(DelayWhenDemo);
+demos.push(ThrottleTimeDemo);
+demos.push(TimeIntervalDemo);
+demos.push(TimeStampDemo);
+demos.push(ConcatMapDemo);
+demos.push(ConcatMapToDemo);
+demos.push(DefaultIfEmptyDemo);
 
 const subject = new Subject();
 

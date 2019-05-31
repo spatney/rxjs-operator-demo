@@ -38,3 +38,6 @@ export function SubscribeOnDemo() {
     console.log('function end');
 
 }
+
+// SubscribeOn : change source scheduler
+// ObserveOn : re-emit on a new scheduler
