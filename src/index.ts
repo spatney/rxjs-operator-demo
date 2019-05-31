@@ -1,5 +1,5 @@
 import { of, Subject } from "rxjs";
-import { filter, last, repeatWhen } from "rxjs/operators";
+import { find, last, repeatWhen } from "rxjs/operators";
 import { BufferDemo } from "./operators/buffering/buffer";
 import { BufferCountDemo } from "./operators/buffering/bufferCount";
 import { BufferTimeDemo } from "./operators/buffering/bufferTime";
@@ -56,13 +56,13 @@ import { IgnoreElementsDemo } from "./operators/observable transformation/ignore
 import { RepeatDemo } from "./operators/observable transformation/repeat";
 import { RepeatWhenDemo } from "./operators/observable transformation/repeatWhen";
 import { AuditTimeDemo } from "./operators/time, duration & scheduled/auditTime";
-import { ObserveOnDemo } from "./operators/time, duration & scheduled/observeOn";
-import { SampleTimeDemo } from "./operators/time, duration & scheduled/sampleTime";
-import { SubscribeOnDemo } from "./operators/time, duration & scheduled/subscribeOn";
 import { DebounceDemo } from "./operators/time, duration & scheduled/debounce";
 import { DebounceTimeDemo } from "./operators/time, duration & scheduled/debounceTime";
 import { DelayDemo } from "./operators/time, duration & scheduled/delay";
 import { DelayWhenDemo } from "./operators/time, duration & scheduled/delayWhen";
+import { ObserveOnDemo } from "./operators/time, duration & scheduled/observeOn";
+import { SampleTimeDemo } from "./operators/time, duration & scheduled/sampleTime";
+import { SubscribeOnDemo } from "./operators/time, duration & scheduled/subscribeOn";
 import { ThrottleTimeDemo } from "./operators/time, duration & scheduled/throttleTime";
 import { TimeIntervalDemo } from "./operators/time, duration & scheduled/timeInterval";
 import { TimeStampDemo } from "./operators/time, duration & scheduled/timestamp";
@@ -144,13 +144,16 @@ demos.push(DefaultIfEmptyDemo);
 
 const subject = new Subject();
 
-console.log = (d: any) => {
-    if (typeof (d) === 'object') {
-        d = JSON.stringify(d);
-    }
-    const el = document.createElement('div');
-    el.innerHTML = d;
-    document.getElementById('area').append(el);
+console.log = (d: string | object, ...opt: any) => {
+    of(d, ...opt)
+        .subscribe(value => {
+            if (typeof (value) === 'object') {
+                value = JSON.stringify(value);
+            }
+            const el = document.createElement('div');
+            el.innerHTML = value;
+            document.getElementById('area').append(el);
+        });
 }
 
 of(...demos)
@@ -161,12 +164,12 @@ of(...demos)
 
 of(...demos)
     .pipe(
-        repeatWhen(_ => subject),
-        filter(d => {
-            const name = d.name.replace('Demo', '').toLowerCase();
+        find(d => {
+            const name = d.name.replace('Demo', '').toLowerCase();  
             return name === document.getElementsByTagName('input')[0].value.toLowerCase();
-        })
-    ).subscribe(_ => _())
+        }),
+        repeatWhen(_ => subject)
+    ).subscribe(_ => _());
 
 document.getElementById('input').addEventListener('keyup', event => {
     if (event.keyCode === 13) {
