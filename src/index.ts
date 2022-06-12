@@ -169,7 +169,13 @@ of(...demos)
             return name === document.getElementsByTagName('input')[0].value.toLowerCase();
         }),
         repeatWhen(_ => subject)
-    ).subscribe(_ => _());
+    ).subscribe(_ => {
+        if(_) {
+            _();
+        }else {
+            console.log("Operator Not Found!\n");
+        }
+    });
 
 document.getElementById('input').addEventListener('keyup', event => {
     if (event.keyCode === 13) {
